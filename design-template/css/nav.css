@@ -1,0 +1,95 @@
+/* Small Screens */
+.main-nav {
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+    margin-bottom: 100px;
+}
+
+.navlinksContainer {
+    display: none; 
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 90vh;
+    width: 100%;
+    background-color: white;
+    transition: all 0.5s;
+}
+
+.navlinks {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50%;
+    height: 45%;
+    font-size: 30px;
+}
+
+.navlink {
+    margin: 10px 0;
+}
+
+.toggleBtn {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+  
+  .hamburger,
+  .hamburger:before,
+  .hamburger:after {
+    content: "";
+    display: block;
+    background-color: black;
+    height: 2px;
+    width: 100%;
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+.hamburger:before,
+.hamburger:after {
+    content: "";
+    position: absolute;
+}
+
+.hamburger:before {
+    top: -8px;
+}
+
+.hamburger:after {
+    top: 8px;
+}
+
+/* .toggleBtn.active .hamburger {
+    transform: rotate(45deg);
+}
+
+.toggleBtn.active .hamburger:before {
+    transform: translateY(8px) rotate(90deg);
+}
+
+.toggleBtn.active .hamburger:after {
+    transform: translateY(-8px) rotate(90deg);
+} */
+
+/* For testing */
+/* .toggleBtn:hover .hamburger {
+    transform: rotate(45deg);
+}
+
+.toggleBtn:hover .hamburger:before {
+    transform: translateY(8px) rotate(90deg);
+}
+
+.toggleBtn:hover .hamburger:after {
+    transform: translateY(-8px) rotate(90deg);
+} */
+  
+/* Larger Screens */

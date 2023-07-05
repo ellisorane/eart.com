@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <!-- Social media style  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>EArt.com</title>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="main-nav">
+
+            <div class="toggleBtn">
+                <div class="hamburger "></div>
+            </div>
+
+            <div class="navlinksContainer">
+                <div class="navlinks">
+                    <a href="index.html" class="navlink">Shop</a>
+                    <a href="account.html" class="navlink">Account</a>
+                    <a href class="navlink">Logout</a>
+                    <a href="login.html" class="navlink">Log In</a>
+                    <a href="signup.html" class="navlink">Sign Up</a>
+
+                </div>
+            </div>
+
+            <div class="site-logo"><h2><a href="index.html">EArt.com</a></h2></div>
+
+            <div class="cart">
+                <a href="cart.html" class="">Cart <span class="numOfItems">0</span></a>
+            </div>
+
+        </div>
+          
+    </nav>
+    <!-- Navigation Ends -->
+
+    <div class="mainContainer">
+
+        <h2>John Smith</h2>
+
+        <div class="accountContainer">
+            <!-- Sidebar  -->
+            <div class="accountSidebar">
+                <div class="accountTab"><a href="">Profile</a></div>
+                <!-- For Admin account -->
+                <div class="accountTab"><a href="">My Products</a></div>
+                <div class="accountTab"><a href="">Orders</a></div>
+                <div class="accountTab active"><a href="">Billing</a></div>
+            </div>
+            <!-- Content  -->
+            <div class="accountContent">
+                <!-- Profile -->
+                <h2>Profile</h2>
+                <form class="forms" action="">
+                    <label for="">Name</label><br>
+                    <input type="text" name="name" id=""><br>
+                    <label for="">Email</label><br>
+                    <input type="email" name="email" id=""><br>
+                    <label for="">Password</label><br>
+                    <input type="password" name="password" id=""><br>
+                    <label for="">Re-enter Password</label><br>
+                    <input type="password" name="confirm password" id=""><br>
+                    <input type="submit" value="Submit">
+                </form>
+                <!-- Profile Ends -->
+
+                <!-- Orders Content -->
+                <h2>Orders</h2>
+                <!-- Order Item  -->
+                <div class="order">
+                    <!-- 1st col: item img  -->
+                    <div class="orderItemImgContainer">
+                        <img src="imgs/carl1.jpg" class="orderItemImg" alt="product" >
+                    </div>
+
+                    <!--2nd col: item name, size quantity -->
+                    <div class="orderCol2">
+                        <div class="orderItemName">Carl #1</div>
+                        <div class="">Size: 10" x 16"</div>
+                        <div class="">Qunatity: 1</div>
+                        <div class="">Total: $50.00</div>
+                    </div>
+                </div>
+                <!-- Order Item Ends  -->
+                <!-- Orders Content Ends -->
+
+                <!-- Products Content -->
+                <h2>My Products</h2>
+                <!-- Order Item  -->
+                <div class="order">
+                    <!-- 1st col: item img  -->
+                    <div class="orderItemImgContainer">
+                        <img src="imgs/carl1.jpg" class="orderItemImg" alt="product" >
+                    </div>
+
+                    <!--2nd col: item name, size quantity -->
+                    <div class="orderCol2">
+                        <div class="orderItemName">Carl #1</div>
+                        <div class="">Size: 10" x 16"</div>
+                        <div class="">Amount left for sale: 1</div>
+                        <div class="">Total: $50.00</div>
+                    </div>
+                </div>
+                <!-- Order Item Ends  -->
+                <div class="checkoutBtn" style="margin: 30px auto;">Add Product</div>
+                <form class="forms" action="">
+                    <label for="">Product Name</label><br>
+                    <input type="text" name="name" id=""><br>
+                    <label for="">Price</label><br>
+                    <input type="number" name="price" id=""><br>
+                    <label for="">Available Quantity</label><br>
+                    <input type="number" name="quantity" id=""><br>
+                    <label for="">Product Image</label><br>
+                    <input type="file" name="image" id=""><br>
+                    
+                    <input type="submit" value="Submit">
+                </form>
+
+                
+                <!-- Products Content Ends -->
+
+                
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="social">
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-twitter"></a>
+            <a href="#" class="fa fa-google"></a>
+            <a href="#" class="fa fa-youtube"></a>
+            <a href="#" class="fa fa-instagram"></a>
+        </div>
+    </footer>
+
+
+    <script src="index.js"></script>
+</body>
+</html>
