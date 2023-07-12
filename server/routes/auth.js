@@ -17,15 +17,15 @@ passport.use(
         async (accessToken, refreshToken, profile, done) => {
             try {
                 // Check if the user already exists in the database
-                const query = 'SELECT * FROM users WHERE google_id = $1';
+                const query = 'SELECT * FROM users WHERE user_email = $1';
                 const result = await pool.query(query, [profile.id]);
         
                 if (result.rowCount === 0) {
                 // User does not exist, create a new user entry in the database
-                const insertQuery = 'INSERT INTO users (google_id, name, email) VALUES ($1, $2, $3)';
-                await pool.query(insertQuery, [profile.id, profile.displayName, profile.emails[0].value]);
+                const insertQuery = 'INSERT INTO users (user_name, user_email, user_password) VALUES ($1, $2, $3)';
+                await pool.query(insertQuery, [ profile.displayName, profile.emails[0].value, profile.id]);
                 }
-        
+
                 // Call the done callback with the user object
                 done(null, profile);
             } catch (error) {
@@ -37,30 +37,45 @@ passport.use(
 );
 
 passport.serializeUser((user, done) => {
-    done(null, user.id); // Store the user ID in the session
+    console.log("Serialized user:" + JSON.stringify(user));
+    // done(null, user.id); // Store the user ID in the session
+    done(null, user); // Store the user ID in the session
 });
 
-passport.deserializeUser((id, done) => {
+passport.deserializeUser((user, done) => {
     // Fetch user from the database based on the ID
-    // Call the done callback with the user object
+    done(null, user); // Store the user ID in the session
+
 });
-
-// app.use(passport.initialize());
-// app.use(passport.session());
-
-// app.get('/auth/google', passport.authenticate('google', { scope: ['profile'] }));
-
-// app.get(
-//   '/auth/google/callback',
-//   passport.authenticate('google', { failureRedirect: '/login' }),
-//   (req, res) => {
-//     // Redirect or send response after successful authentication
-//   }
-// );
-
 
 
 const router = express.Router();
+
+// @route   GET /auth/google
+// @desc    Login/Signup with Google
+// @access  Public
+router.get('/google', passport.authenticate('google', { scope: ['email', 'profile'] }));
+
+// @route   GET /auth/google/callback
+// @desc    Google auth callback
+// @access  Private
+router.get('/google/callback',
+  passport.authenticate('google', {
+    successRedirect: '/auth/google/success', 
+    failureRedirect: '/auth/google/failure'
+ }),
+  (req, res) => {
+    
+  }
+);
+
+router.get('/google/success', (req, res) => {
+    res.json({ msg: 'Google auth successful.' });
+})
+
+router.get('/google/failure', (req, res) => {
+    res.json({ msg: 'Google auth failed.' });
+})
 
 // @route   GET /auth/
 // @desc    Get user

@@ -4,10 +4,22 @@ const app = express();
 const PORT = 5000;
 const cors = require("cors");
 const pool = require("./db");
+const session = require('express-session');
+
 
 // middleware
 app.use(cors());
 app.use(express.json()); // req.body
+
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: true }
+  }));
+
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 
 // Routes
