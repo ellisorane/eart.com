@@ -4,6 +4,7 @@ const app = express();
 const PORT = 5000;
 const cors = require("cors");
 const pool = require("./db");
+const passport = require('passport');
 const session = require('express-session');
 
 
@@ -11,16 +12,18 @@ const session = require('express-session');
 app.use(cors());
 app.use(express.json()); // req.body
 
+
 app.use(session({
-    secret: 'keyboard cat',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: true }
-  }));
+    cookie: { secure: false },
+  }));  
 
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 
+  
 
 // Routes
 
@@ -32,18 +35,8 @@ app.get("/", (req, res) => {
 
 // Routes
 app.use('/auth', require('./routes/auth'));
-
-// Create
-app.post("/todos", async (req, res) => {
-    try {
-        const { description } = req.body;
-        const newTodo = await pool.query("INSERT INTO todo (description) VALUES($1) RETURNING *", [description]);
-        console.log(req.body)
-        return res.json(newTodo);
-    } catch (error) {
-        console.error(error);
-    }
-}); 
+app.use('/products', require('./routes/products'));
+app.use('/cart', require('./routes/cart'));
 
 app.listen(PORT, () => {
     console.log("listening on port " + PORT);

@@ -3,6 +3,8 @@ const express = require('express');
 const pool = require("../db");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const router = express.Router();
+const { authenticate } = require('../middleware');
 
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
@@ -18,8 +20,8 @@ passport.use(
             try {
                 // Check if the user already exists in the database
                 const query = 'SELECT * FROM users WHERE user_email = $1';
-                const result = await pool.query(query, [profile.id]);
-        
+                const result = await pool.query(query, [profile.emails[0].value]);
+                
                 if (result.rowCount === 0) {
                 // User does not exist, create a new user entry in the database
                 const insertQuery = 'INSERT INTO users (user_name, user_email, user_password) VALUES ($1, $2, $3)';
@@ -27,9 +29,10 @@ passport.use(
                 }
 
                 // Call the done callback with the user object
+                console.log('Strategy profile: ', profile); 
                 done(null, profile);
             } catch (error) {
-                console.error('Error handling Google authentication:', error);
+                console.error('Error handling Google Strategy:', error);
                 done(error, null);
             }
         }
@@ -37,19 +40,29 @@ passport.use(
 );
 
 passport.serializeUser((user, done) => {
-    console.log("Serialized user:" + JSON.stringify(user));
-    // done(null, user.id); // Store the user ID in the session
-    done(null, user); // Store the user ID in the session
+    done(null, user.emails[0].value); // Store the user email in the session
 });
 
-passport.deserializeUser((user, done) => {
-    // Fetch user from the database based on the ID
-    done(null, user); // Store the user ID in the session
+passport.deserializeUser(async(user_email, done) => {
+    try {
+        // Fetch user from the database based on the email store in the session
+        const query = 'SELECT * FROM users WHERE user_email = $1';
+        const result = await pool.query(query, [user_email]);
+    
+        if (result.rowCount === 0) {
+            done(new Error('User not found'), null);
+        } else {
+            const user = result.rows[0];
+            done(null, user);
+        }
+    } catch (error) {
+        done(error, null);
+    }
+    done(null, user_email); 
 
 });
 
 
-const router = express.Router();
 
 // @route   GET /auth/google
 // @desc    Login/Signup with Google
@@ -61,16 +74,15 @@ router.get('/google', passport.authenticate('google', { scope: ['email', 'profil
 // @access  Private
 router.get('/google/callback',
   passport.authenticate('google', {
-    successRedirect: '/auth/google/success', 
     failureRedirect: '/auth/google/failure'
  }),
   (req, res) => {
-    
+    res.redirect('/auth/google/user');
   }
 );
 
-router.get('/google/success', (req, res) => {
-    res.json({ msg: 'Google auth successful.' });
+router.get('/google/user', (req, res) => {
+    res.json({ msg: "Logged in Google user: ", user: req.user });
 })
 
 router.get('/google/failure', (req, res) => {
@@ -80,8 +92,14 @@ router.get('/google/failure', (req, res) => {
 // @route   GET /auth/
 // @desc    Get user
 // @access  Private
-router.get('/', async (req, res) => {
-    res.json('success');
+router.get('/', authenticate, async (req, res) => {
+    try {
+        res.json(req.user);
+        
+    } catch (error) {
+        console.error(error);
+        res.json(error);
+    }
 });
 
 // @route   POST /auth/signup
@@ -136,7 +154,7 @@ router.post('/login', async (req, res) => {
 
         if (result.rowCount === 0) {
             // User does not exist
-            return res.status(401).json({ error: 'Invalid credentials' });
+            return res.status(401).json({ error: 'Invalid credentials' }); 
         }
     
         const user = result.rows[0];
@@ -163,12 +181,12 @@ router.post('/login', async (req, res) => {
     }
 });
 
-// @route   DELETE /auth/:id
+// @route   DELETE /auth/
 // @desc    Delete User
-// @access  Public
-router.delete('/:id', async (req, res) => {
+// @access  Private
+router.delete('/', authenticate, async (req, res) => {
     try {
-        const id = req.params.id;
+        const id = req.user.id;
         const query = "DELETE FROM users WHERE id = $1"
         const result = await pool.query(query, [id]);
         res.json("Deleted user successfully");
