@@ -8,9 +8,9 @@ const { authenticate } = require('../middleware');
 // @desc    Get my cart
 // @access  Private
 // @status  DONE
-router.get('/', async (req, res) => {
+router.get('/', authenticate, async (req, res) => {
     try {
-        const query = 'SELECT * FROM cart where user_id = $1;';
+        const query = 'SELECT * FROM cart where user_id = $1';
         let result = await pool.query(query, [req.user.id]);
 
         if (result.rowCount === 0) {
@@ -31,12 +31,13 @@ router.get('/', async (req, res) => {
 // @desc    Create cart
 // @access  Private
 // @status  DONE
-router.post('/', async (req, res) => {
+router.post('/', authenticate, async (req, res) => {
     try {
-        const { user_id, cart_total } = req.body;
+        // const { cart_total } = req.body;
+        console.log("user: ", req.user.user);
 
         // Check for existing cart
-        const existingCartQuery = await pool.query('SELECT * FROM cart where user_id = $1;', [user_id])
+        const existingCartQuery = await pool.query('SELECT * FROM cart where user_id = $1', [req.user.user_id])
         const existingCart = existingCartQuery.rows[0];
 
         if(existingCart) {
@@ -44,7 +45,7 @@ router.post('/', async (req, res) => {
         } else {
             // Create the cart in the database
             const query = 'INSERT INTO cart (user_id, cart_total) VALUES ($1, $2)';
-            const result = await pool.query(query, [user_id, cart_total]);
+            const result = await pool.query(query, [req.user.user_id, 0]);
     
             res.json('Cart created successfully.');
         }
@@ -83,7 +84,7 @@ router.delete('/:id', async (req, res) => {
 router.get('/items', async (req, res) => {
     try {
         const { cart_id } = req.body;
-        const query = 'SELECT * FROM cart_items where cart_id = $1;';
+        const query = 'SELECT * FROM cart_items where cart_id = $1';
         let result = await pool.query(query, [cart_id]);
 
         if (result.rowCount === 0) {
@@ -107,7 +108,7 @@ router.post('/item', async (req, res) => {
         const { cart_id, product_id, product_quantity, product_price } = req.body;
 
         // Check for if product is already in cart
-        const existingItemQuery = await pool.query('SELECT * FROM cart_items where product_id = $1;', [product_id]);
+        const existingItemQuery = await pool.query('SELECT * FROM cart_items where product_id = $1', [product_id]);
         const existingItem = existingItemQuery.rows[0];
         existingItem && console.log("Item exists in cart: ", existingItem);
         
@@ -136,7 +137,7 @@ router.put('/item', async (req, res) => {
         const { cart_id, product_id, product_quantity, increase_quantity } = req.body; // increase_quantity is a boolean  where false means decrease quantity
 
         // Check for if product is already in cart
-        const existingItemQuery = await pool.query('SELECT * FROM cart_items WHERE product_id = $1 AND cart_id = $2;', [product_id, cart_id]);
+        const existingItemQuery = await pool.query('SELECT * FROM cart_items WHERE product_id = $1 AND cart_id = $2', [product_id, cart_id]);
         const existingItem = existingItemQuery.rows[0];
     
         // Update quantity
@@ -149,16 +150,18 @@ router.put('/item', async (req, res) => {
         res.json({ error: 'Error creating cart.' });
     }
 });
-// @route   DELETE /cart/item
+// @route   DELETE /cart/item/:cart_id&:product_id
 // @desc    Delete product
 // @access  Private
 // @status  IN PROGRESS
-router.delete('/item', async (req, res) => {
+router.delete('/item/:cart_id&:product_id', async (req, res) => {
     try {
-        const { cart_id, product_id } = req.body;
-        const query = "DELETE FROM cart_items WHERE product_id = $1 AND cart_id = $2;";
+        
+        const { cart_id, product_id } = req.params;
+        
+        const query = "DELETE FROM cart_items WHERE product_id = $1 AND cart_id = $2";
         await pool.query(query, [product_id, cart_id]);
-        res.json("Deleted cart successfully");
+        res.json("Deleted item successfully");
     } catch (error) {
         console.error(error);
         res.json({ error: "Error deleting item." });

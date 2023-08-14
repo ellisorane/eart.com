@@ -10,7 +10,7 @@ const { authenticate } = require('../middleware');
 // @status  DONE
 router.get('/', async (req, res) => {
     try {
-        const query = 'SELECT * FROM products;';
+        const query = 'SELECT * FROM products';
         let result = await pool.query(query);
 
         if (result.rowCount === 0) {
