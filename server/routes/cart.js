@@ -60,7 +60,7 @@ router.post('/', authenticate, async (req, res) => {
 // @desc    Delete product
 // @access  Private
 // @status  DONE
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', authenticate, async (req, res) => {
     try {
         const id = req.params.id;
         const query = "DELETE FROM cart WHERE id = $1"
@@ -81,7 +81,7 @@ router.delete('/:id', async (req, res) => {
 // @desc    Get cart items for  your cart
 // @access  Private
 // @status  DONE
-router.get('/items', async (req, res) => {
+router.get('/items', authenticate, async (req, res) => {
     try {
         const { cart_id } = req.body;
         const query = 'SELECT * FROM cart_items where cart_id = $1';
@@ -103,7 +103,7 @@ router.get('/items', async (req, res) => {
 // @desc    Create a new cart item
 // @access  Private
 // @status  DONE
-router.post('/item', async (req, res) => {
+router.post('/item', authenticate, async (req, res) => {
     try {
         const { cart_id, product_id, product_quantity, product_price } = req.body;
 
@@ -132,7 +132,7 @@ router.post('/item', async (req, res) => {
 // @desc    Update cart item quantity
 // @access  Private
 // @status  DONE
-router.put('/item', async (req, res) => {
+router.put('/item', authenticate, async (req, res) => {
     try {
         const { cart_id, product_id, product_quantity, increase_quantity } = req.body; // increase_quantity is a boolean  where false means decrease quantity
 
@@ -153,8 +153,8 @@ router.put('/item', async (req, res) => {
 // @route   DELETE /cart/item/:cart_id&:product_id
 // @desc    Delete product
 // @access  Private
-// @status  IN PROGRESS
-router.delete('/item/:cart_id&:product_id', async (req, res) => {
+// @status  DONE
+router.delete('/item/:cart_id&:product_id', authenticate, async (req, res) => {
     try {
         
         const { cart_id, product_id } = req.params;

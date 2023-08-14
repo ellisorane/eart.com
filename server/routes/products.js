@@ -31,7 +31,7 @@ router.get('/', async (req, res) => {
 // @desc    Create product
 // @access  Private
 // @status  IN PROGRESS - Needs image upload feature
-router.post('/', async (req, res) => {
+router.post('/', authenticate, async (req, res) => {
     try {
         const { product_name, product_description, product_price, product_image_name, product_image_url } = req.body;
 
@@ -50,7 +50,7 @@ router.post('/', async (req, res) => {
 // @desc    Delete product
 // @access  Private
 // @status  DONE
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', authenticate, async (req, res) => {
     try {
         const id = req.params.id;
         const query = "DELETE FROM products WHERE id = $1"
