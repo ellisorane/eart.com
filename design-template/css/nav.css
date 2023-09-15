@@ -67,7 +67,7 @@
     top: 8px;
 }
 
-/* .toggleBtn.active .hamburger {
+.toggleBtn.active .hamburger {
     transform: rotate(45deg);
 }
 
@@ -77,7 +77,7 @@
 
 .toggleBtn.active .hamburger:after {
     transform: translateY(-8px) rotate(90deg);
-} */
+}
 
 /* For testing */
 /* .toggleBtn:hover .hamburger {

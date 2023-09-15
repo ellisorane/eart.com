@@ -1,21 +1,25 @@
 import React from "react"
 import style from "./Nav.module.css"
 import { AiOutlineShoppingCart } from "react-icons/ai"
+
 function Nav() {
   const [toggleNav, setToggleNav] = React.useState(false)
   return (
     <nav>
       <div className={style.mainNav}>
         <div
-          // className={`${style.toggleBtn}, ${toggleNav && style.active}`}
-          className={style.toggleBtn}
+          className={
+            toggleNav ? `${style.toggleBtn} ${style.open}` : style.toggleBtn
+          }
           onClick={() => setToggleNav(!toggleNav)}
         >
           <div className={style.hamburger}></div>
         </div>
         <div
           className={
-            toggleNav ? style.navlinksContainerOpen : style.navlinksContainer
+            toggleNav
+              ? `${style.navlinksContainer} ${style.open}`
+              : style.navlinksContainer
           }
         >
           <div className={style.navlinks}>
