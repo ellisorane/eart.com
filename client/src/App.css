@@ -22,18 +22,9 @@ html, body {
 @media (min-width: 768px) {
 
   .mainContainer {
-      width: 60%;
+      width: 80%;
       margin: 0 auto;
   }
-
-  .mainContainer.home {
-    width: 80%;
-    margin: 0 auto;
-    display: grid;
-    gap: 10px;
-    grid-template-columns: 1fr 1fr;
-    align-content: flex-start;
-}
 
   .checkoutBtn {
       width: fit-content;

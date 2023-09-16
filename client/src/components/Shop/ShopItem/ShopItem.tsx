@@ -1,5 +1,5 @@
 // import React from 'react'
-import style from "./ShopItem.module.css"
+import style from "../Shop.module.css"
 import shopImg from "../../../assets/images/shopImg.jpg"
 
 function ShopItem() {

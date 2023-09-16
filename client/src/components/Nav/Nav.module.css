@@ -1,5 +1,8 @@
 /* Small Screens */
 .mainNav {
+  position: fixed;
+  background-color: white;
+  width: 97%;
   padding: 5px;
   display: flex;
   justify-content: space-between;
@@ -10,11 +13,13 @@
 
 .siteLogo {
 text-align: center;
+width: fit-content;
+margin: 0 auto;
 }
 
 .navlinksContainer {
   display: none;
-  position: absolute;
+  position: fixed;
   left: 0;
   bottom: 0;
   height: 90vh;
@@ -33,12 +38,12 @@ text-align: center;
   align-items: center;
   margin-top: 40%;
   height: 45%;
-  font-size: 30px;
   transition: all 1s;
 }
 
 .navlink {
   margin: 10px 0;
+  font-size: 30px;
 }
 
 .toggleBtn {
@@ -94,6 +99,7 @@ text-align: center;
 /* Larger Screens */
 @media (min-width: 768px) {
   .mainNav {
+    position: relative;
     width: 80%;
     margin: 0 auto;
     display: grid;
@@ -110,7 +116,6 @@ text-align: center;
 
   .navlinks {
     display: flex;
-    /* grid-template-columns: 1fr 1fr 1fr; */
     flex-direction: row;
     justify-content: flex-start;
     align-items: start;
@@ -121,6 +126,7 @@ text-align: center;
 
   .navlink {
     margin-right: 10px;
+    font-size: 15px;
   }
 
   .cart {

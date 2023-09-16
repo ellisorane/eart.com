@@ -5,7 +5,7 @@ import ShopItem from "./ShopItem/ShopItem"
 
 function Shop() {
   return (
-    <div>
+    <div className={style.shop}>
       <ShopItem />
       <ShopItem />
       <ShopItem />
