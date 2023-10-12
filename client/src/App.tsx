@@ -1,15 +1,20 @@
-// import { Router, Route, Switch } from "react-router-dom"
-
+import { Routes, Route, BrowserRouter as Router } from "react-router-dom" // Import the appropriate router
 import Nav from "./components/Nav/Nav"
 import AppRouter from "./AppRouter"
 import "./App.css"
+import Shop from "./components/Shop/Shop"
+import Signup from "./components/Auth/Signup/Signup"
 
 function App() {
   return (
-    <div className="App">
+    <Router>
       <Nav />
-      <AppRouter />
-    </div>
+      {/* <AppRouter /> */}
+      <Routes>
+        <Route path="/" element={<Shop />} />
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
+    </Router>
   )
 }
 

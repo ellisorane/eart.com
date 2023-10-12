@@ -8,6 +8,7 @@ import {
   Link,
 } from "react-router-dom"
 import Shop from "./components/Shop/Shop"
+import Signup from "./components/Auth/Signup/Signup"
 
 function AppRouter() {
   const router = createBrowserRouter([
@@ -15,12 +16,17 @@ function AppRouter() {
       path: "/",
       element: <Shop />,
     },
+    {
+      path: "/signup",
+      element: <Signup />,
+    },
   ])
   //   console.log(router.basename)
 
   return (
     <div className={`mainContainer ${router.basename === "/" && "home"}`}>
       <RouterProvider router={router} />
+      
     </div>
   )
 }

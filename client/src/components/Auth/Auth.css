@@ -1,0 +1,37 @@
+.forms {
+    width: 100%;
+}
+
+.forms input {
+    padding: 10px 0;
+    border-radius: 0;
+    border: 1px solid rgb(38, 38, 38);
+    font-size: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.forms input[type="submit"] {
+    padding: 15px 30px;
+    font-size: 20px;
+    background-color: rgb(29, 29, 29);
+    color: white;
+    font-weight: bold;
+    border: none;
+    width: fit-content;
+}
+
+.forms input[type="file"] {
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    border: none;
+}
+
+.forms input::file-selector-button {
+    background-color: rgb(29, 29, 29);
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 10px;
+}
