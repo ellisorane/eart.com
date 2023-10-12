@@ -4,6 +4,7 @@ import AppRouter from "./AppRouter"
 import "./App.css"
 import Shop from "./components/Shop/Shop"
 import Signup from "./components/Auth/Signup/Signup"
+import Login from "./components/Auth/Login/Login"
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Shop />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </Router>
   )

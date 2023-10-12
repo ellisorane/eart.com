@@ -1,10 +1,10 @@
 import React from "react"
 import "../Auth.css"
 
-function Signup() {
+function Login() {
   return (
     <div className="authContainer">
-      <h2>Sign Up</h2>
+      <h2>Log in</h2>
 
       <form className="authForms" action="">
         <label htmlFor="email">Email</label>
@@ -15,14 +15,10 @@ function Signup() {
         <br />
         <input type="password" name="password" id="" required />
         <br />
-        <label htmlFor="confirm password">Re-enter Password</label>
-        <br />
-        <input type="password" name="confirm password" id="" required />
-        <br />
-        <input type="submit" value="Sign Up" />
+        <input type="submit" value="Log In" />
       </form>
     </div>
   )
 }
 
-export default Signup
+export default Login

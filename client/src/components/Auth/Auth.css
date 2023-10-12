@@ -1,8 +1,10 @@
-.forms {
-    width: 100%;
+.authContainer {
+    padding-top: 100px;
+    width: auto;
+    margin: 0 10px;
 }
 
-.forms input {
+.authForms input {
     padding: 10px 0;
     border-radius: 0;
     border: 1px solid rgb(38, 38, 38);
@@ -11,7 +13,7 @@
     width: 100%;
 }
 
-.forms input[type="submit"] {
+.authForms input[type="submit"] {
     padding: 15px 30px;
     font-size: 20px;
     background-color: rgb(29, 29, 29);
@@ -21,14 +23,14 @@
     width: fit-content;
 }
 
-.forms input[type="file"] {
+.authForms input[type="file"] {
     font-size: 20px;
     color: white;
     font-weight: bold;
     border: none;
 }
 
-.forms input::file-selector-button {
+.authForms input::file-selector-button {
     background-color: rgb(29, 29, 29);
     color: white;
     font-weight: bold;

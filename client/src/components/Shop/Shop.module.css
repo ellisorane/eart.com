@@ -34,7 +34,7 @@
 @media (min-width: 768px) {
     .shop {
         padding-top: 50px;
-        width: 100%;
+        width: 80%;
         margin: 0 auto;
         display: grid;
         gap: 10px;

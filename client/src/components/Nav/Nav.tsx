@@ -25,11 +25,10 @@ function Nav() {
         >
           <div className={style.navlinks}>
             <NavLink to="/" className={style.navlink}>Shop</NavLink>
-            <NavLink to="/signup" className={style.navlink}>Signup</NavLink>
+            <NavLink to="/signup" className={style.navlink}>Sign Up</NavLink>
+            <NavLink to="/login" className={style.navlink}>Log In</NavLink>
             <p className={style.navlink}>Account</p>
             <p className={style.navlink}>Logout</p>
-            <p className={style.navlink}>Log In</p>
-            <p className={style.navlink}>Sign Up</p>
           </div>
         </div>
         <div className={style.siteLogo}>
