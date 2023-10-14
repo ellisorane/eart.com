@@ -37,3 +37,12 @@
     border: none;
     padding: 10px;
 }
+
+/* Large Screens  */
+
+@media (min-width: 768px) {
+    .authContainer {
+        width: 560px;
+        margin: 0 auto;
+    }
+}
