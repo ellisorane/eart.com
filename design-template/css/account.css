@@ -1,63 +1,62 @@
 .accountContainer {
-    display: grid;
-    /* grid-template-columns: 20% auto; */
-    gap: 10px;
+	display: grid;
+	/* grid-template-columns: 20% auto; */
+	gap: 10px;
 }
 
 .accountSidebar {
-    border: 1px solid rgb(210, 210, 210);
-    width: 100%;
-    height: fit-content;
-    background-color: rgb(242, 242, 242);
+	border: 1px solid rgb(210, 210, 210);
+	width: 100%;
+	height: fit-content;
+	background-color: rgb(242, 242, 242);
 }
 
 .accountTab.active {
-    border: 1px solid gray;
+	border: 1px solid gray;
 }
 
 .order {
-    height: 150px;
-    display: grid;
-    grid-template-columns: auto 2fr;
-    gap: 5px;
-    padding: 10px 0;
+	height: 150px;
+	display: grid;
+	grid-template-columns: auto 2fr;
+	gap: 5px;
+	padding: 10px 0;
 }
 
 .orderItemImgContainer {
-    display: flex;
-    align-items: center;
-    background-color: rgb(238, 238, 238);
+	display: flex;
+	align-items: center;
+	background-color: rgb(238, 238, 238);
 }
 
 .orderItemImg {
-    width: 120px;
+	width: 120px;
 }
 
 .orderCol2 {
-    text-align: right;
+	text-align: right;
 }
 
 .orderCol2 div {
-    margin-bottom: 15px;
+	margin-bottom: 15px;
 }
 
-
 .orderItemInfo {
-    display: flex;
-    justify-content: space-between;
-    align-items: start;
-    flex-direction: column;
-} 
+	display: flex;
+	justify-content: space-between;
+	align-items: start;
+	flex-direction: column;
+}
 
 .orderItemName {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
+	font-size: 20px;
+	font-weight: bold;
+	margin-bottom: 10px;
 }
 
 @media (min-width: 768px) {
-    .orderItemImg {
-        height: 80%;
-        width: 200px;
-    }
+	.orderItemImg {
+		height: 80%;
+		width: 200px;
+	}
 }

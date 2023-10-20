@@ -5,6 +5,7 @@ import "./App.css"
 import Shop from "./components/Shop/Shop"
 import Signup from "./components/Auth/Signup/Signup"
 import Login from "./components/Auth/Login/Login"
+import Account from "./components/Account/Account"
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<Shop />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/account" element={<Account />} />
       </Routes>
     </Router>
   )

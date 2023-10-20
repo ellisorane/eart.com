@@ -1,5 +1,5 @@
 import React from "react"
-import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom"
 import style from "./Nav.module.css"
 import { AiOutlineShoppingCart } from "react-icons/ai"
 
@@ -24,10 +24,18 @@ function Nav() {
           }
         >
           <div className={style.navlinks}>
-            <NavLink to="/" className={style.navlink}>Shop</NavLink>
-            <NavLink to="/signup" className={style.navlink}>Sign Up</NavLink>
-            <NavLink to="/login" className={style.navlink}>Log In</NavLink>
-            <p className={style.navlink}>Account</p>
+            <NavLink to="/" className={style.navlink}>
+              Shop
+            </NavLink>
+            <NavLink to="/signup" className={style.navlink}>
+              Sign Up
+            </NavLink>
+            <NavLink to="/login" className={style.navlink}>
+              Log In
+            </NavLink>
+            <NavLink to="/account" className={style.navlink}>
+              Account
+            </NavLink>
             <p className={style.navlink}>Logout</p>
           </div>
         </div>

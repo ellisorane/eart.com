@@ -6,7 +6,7 @@ function Login() {
     <div className="authContainer">
       <h2>Log in</h2>
 
-      <form className="authForms" action="">
+      <form className="forms" action="">
         <label htmlFor="email">Email</label>
         <br />
         <input type="email" name="email" id="" required />

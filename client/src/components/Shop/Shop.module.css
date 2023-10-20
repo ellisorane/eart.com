@@ -1,8 +1,4 @@
 /* Small Screens  */
-.shop {
-    padding-top: 110px;
-}
-
 .itemContainer {
     width: fit-content;
     padding-bottom: 80px;
@@ -32,16 +28,6 @@
 /* Large Screens  */
 
 @media (min-width: 768px) {
-    .shop {
-        padding-top: 50px;
-        width: 80%;
-        margin: 0 auto;
-        display: grid;
-        gap: 10px;
-        grid-template-columns: 1fr 1fr;
-        align-content: flex-start;
-    }
-
     .itemContainer {
         width: fit-content;
         margin-bottom: 20px;
@@ -55,10 +41,6 @@
 }
 
 @media (min-width: 1400px) {
-    .shop {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-
     .imgContainer {
         max-width: 620px;
     }

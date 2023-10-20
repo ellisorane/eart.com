@@ -17,18 +17,96 @@ html, body {
   margin: 0 10px;
   margin-bottom: 200px;
   min-height: 100vh;
+  padding-top: 110px;
+}
+
+.authContainer {
+  padding-top: 100px;
+  width: auto;
+  margin: 0 10px;
+}
+
+.forms input {
+  padding: 10px;
+  border-radius: 0;
+  border: 1px solid rgb(38, 38, 38);
+  font-size: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.forms input[type="submit"], .submit {
+  padding: 15px 30px;
+  font-size: 20px;
+  background-color: rgb(29, 29, 29);
+  color: white;
+  font-weight: bold;
+  border: none;
+  width: fit-content;
+}
+
+.submit {
+  padding: 10px;
+}
+
+.forms input[type="file"] {
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+  border: none;
+}
+
+.forms input::file-selector-button {
+  background-color: rgb(29, 29, 29);
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 10px;
+}
+
+.profileForms {
+  display: grid;
+  grid-template-columns: 80% 20%;
+  align-items: center;
+  justify-content: center;
+}
+
+.profileForms input, .profileForms button  {
+  margin: 0;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+/* Large Screens  */
+
+@media (min-width: 768px) {
+  .authContainer {
+    width: 560px;
+    margin: 0 auto;
+  }
 }
 
 @media (min-width: 768px) {
 
   .mainContainer {
-      width: 80%;
-      margin: 0 auto;
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 50px;
   }
 
-  .checkoutBtn {
-      width: fit-content;
-      padding: 30px 45px;
+  .mainContainer.shop {
+    margin: 0 auto;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr 1fr;
+    align-content: flex-start;
+  }
+
+}
+
+@media (min-width: 1400px) {
+  .mainContainer.shop {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 

@@ -1,0 +1,93 @@
+.accountContainer {
+  display: grid;
+  /* grid-template-columns: 20% auto; */
+  gap: 20px;
+  position: relative;
+}
+
+.accountSidebar {
+  border: 1px solid rgb(210, 210, 210);
+  width: 100%;
+  height: fit-content;
+  background-color: rgb(242, 242, 242);
+}
+
+.accountTab {
+  padding: 10px 0;
+  padding-left: 5px;
+}
+
+.accountTab.active {
+  border: 1px solid gray;
+}
+
+.order {
+  height: 150px;
+  display: grid;
+  grid-template-columns: auto 2fr;
+  gap: 5px;
+  padding: 10px 0;
+}
+
+.orderItemImgContainer {
+  display: flex;
+  align-items: center;
+  background-color: rgb(238, 238, 238);
+}
+
+.orderItemImg {
+  width: 120px;
+}
+
+.orderCol2 {
+  text-align: right;
+}
+
+.orderCol2 div {
+  margin-bottom: 15px;
+}
+
+.orderItemInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  flex-direction: column;
+}
+
+.orderItemName {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.checkoutBtn {
+  width: fit-content;
+  padding: 30px 45px;
+  background-color: rgb(29, 29, 29);
+  color: white;
+  font-weight: bold;
+  border: none;
+}
+
+.accInfo {
+  margin: 10px 0;
+  font-size: 1.3rem;
+}
+
+@media (min-width: 768px) {
+  .accountContainer {
+    grid-template-columns: 20% auto;
+  }
+
+  .sidebarContainer {
+    position: sticky;
+    top: 10px;
+    height: fit-content;
+    /* background-color: black; */
+}
+
+  .orderItemImg {
+    height: 80%;
+    width: 200px;
+  }
+}
