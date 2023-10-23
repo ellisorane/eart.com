@@ -18,7 +18,7 @@ function AddProduct() {
       <br />
       <label htmlFor="">Product Image</label>
       <br />
-      <input type="file" name="image" id="" />
+      <input type="file" name="image" id="" style={{ paddingLeft: 0}} />
       <br />
 
       <input type="submit" value="Submit" />

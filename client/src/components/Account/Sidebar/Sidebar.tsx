@@ -7,7 +7,7 @@ function Sidebar() {
       <h2 style={{ marginTop: 0 }}>John Smith</h2>
 
       <div className={style.accountSidebar}>
-        <div className={style.accountTab}>
+        <div className={`${style.accountTab} ${style.active}`}>
           <a href="">Account Info</a>
         </div>
         {/* <!-- For Admin account --> */}
@@ -16,9 +16,6 @@ function Sidebar() {
         </div>
         <div className={style.accountTab}>
           <a href="">Orders</a>
-        </div>
-        <div className={`${style.accountTab} ${style.active}`}>
-          <a href="">Billing</a>
         </div>
       </div>
     </div>
