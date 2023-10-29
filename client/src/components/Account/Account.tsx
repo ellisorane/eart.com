@@ -8,10 +8,13 @@ import Orders from "./Orders/Orders"
 import Products from "./Products/MyProducts"
 
 function Account() {
+  const [currentTab, setCurrentTab] = React.useState<
+    "account" | "products" | "orders"
+  >("account") // Options: "acount", "products", "orders"
   return (
     <div className="mainContainer">
       <div className={style.accountContainer}>
-        <Sidebar />
+        <Sidebar currentTab={currentTab} setCurrentTab={setCurrentTab} />
 
         <div className="accountContent">
           <AccountInfo />
@@ -19,7 +22,6 @@ function Account() {
           <Orders />
 
           <Products />
-
         </div>
       </div>
     </div>
