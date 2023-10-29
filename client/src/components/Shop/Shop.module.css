@@ -1,5 +1,5 @@
 /* Small Screens  */
-.itemContainer {
+.singleItemContainer {
     width: fit-content;
     padding-bottom: 80px;
     display: flex;
@@ -19,9 +19,12 @@
     width: 80%;
 }
 
+.itemInfo {
+    padding: 0 5px;
+}
+
 .itemName, .itemPrice {
     font-size: 20px;
-    
 }
 
 .singleItemContainer {
@@ -34,6 +37,7 @@
     font-size: 20px;
     border-radius: 0;
     width: 100%;
+    margin: 0;
     margin-bottom: 50px;
 }
 

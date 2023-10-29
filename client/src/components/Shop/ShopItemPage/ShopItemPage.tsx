@@ -4,8 +4,8 @@ import shopImg from "../../../assets/images/shopImg.jpg"
 
 function ShopItemPage() {
   return (
-        <div className={style.singleItemContainer}>
-            <div className={style.imgContainer}><img src={shopImg} className="itemImg" alt="product" /></div>
+      <div className={`mainContainer ${style.singleItemContainer}`}>
+            <div className={style.imgContainer}><img src={shopImg} className={style.itemImg} alt="product" /></div>
             <div className={style.itemInfo}>
                 <div className={style.itemName}><h2>Carl #1</h2></div>
                 <div className={style.itemPrice}>$50.00</div>
