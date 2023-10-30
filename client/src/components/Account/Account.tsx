@@ -17,11 +17,11 @@ function Account() {
         <Sidebar currentTab={currentTab} setCurrentTab={setCurrentTab} />
 
         <div className="accountContent">
-          <AccountInfo />
+          {currentTab === 'account' && <AccountInfo />}
 
-          <Orders />
+          {currentTab === 'orders' && <Orders />}
 
-          <Products />
+          {currentTab === 'products' && <Products />}
         </div>
       </div>
     </div>
