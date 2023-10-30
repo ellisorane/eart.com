@@ -5,6 +5,9 @@ import { AiOutlineShoppingCart } from "react-icons/ai"
 
 function Nav() {
   const [toggleNav, setToggleNav] = React.useState(false)
+  const closeNav = () => {
+    setToggleNav(false)
+  }
   return (
     <nav>
       <div className={style.mainNav}>
@@ -24,23 +27,27 @@ function Nav() {
           }
         >
           <div className={style.navlinks}>
-            <NavLink to="/" className={style.navlink}>
+            <NavLink to="/" className={style.navlink} onClick={closeNav}>
               Shop
             </NavLink>
-            <NavLink to="/signup" className={style.navlink}>
+            <NavLink to="/signup" className={style.navlink} onClick={closeNav}>
               Sign Up
             </NavLink>
-            <NavLink to="/login" className={style.navlink}>
+            <NavLink to="/login" className={style.navlink} onClick={closeNav}>
               Log In
             </NavLink>
-            <NavLink to="/account" className={style.navlink}>
+            <NavLink to="/account" className={style.navlink} onClick={closeNav}>
               Account
             </NavLink>
-            <p className={style.navlink}>Logout</p>
+            <p className={style.navlink} onClick={closeNav}>
+              Logout
+            </p>
           </div>
         </div>
         <div className={style.siteLogo}>
-          <h2>EArt.com</h2>
+          <NavLink to="/">
+            <h2>EArt.com</h2>
+          </NavLink>
         </div>
         <div className={style.cart}>
           <p>
