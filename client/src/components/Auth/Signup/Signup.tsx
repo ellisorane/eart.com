@@ -7,6 +7,10 @@ function Signup() {
       <h2>Sign Up</h2>
 
       <form className="forms" action="">
+        <label htmlFor="name">Name</label>
+        <br />
+        <input type="text" name="name" id="" required />
+        <br />
         <label htmlFor="email">Email</label>
         <br />
         <input type="email" name="email" id="" required />
